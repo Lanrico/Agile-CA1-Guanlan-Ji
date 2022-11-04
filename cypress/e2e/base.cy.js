@@ -45,7 +45,7 @@ describe("Base tests", () => {
     beforeEach(() => {
       cy.visit(`/movies/${movies[1].id}`);
     });
-    it(" displays the movie title, overview and genres and ", () => {
+    it(" displays the movie title, overview and genres", () => {
       cy.get("h3").contains(movie.title);
       cy.get("h3").contains("Overview");
       cy.get("h3").next().contains(movie.overview);
@@ -58,6 +58,31 @@ describe("Base tests", () => {
             cy.wrap($card).contains(genreChipLabels[index]);
           });
         });
+    });
+    it(" displays the movie length, revenue, votes, released date and production countries", () => {
+      cy.get("ul")
+        .eq(2)
+        .within(() => {
+          console.log(movie)
+          const lengthChipLabel = movie.runtime;
+          const costsChipLabel = movie.revenue.toLocaleString();
+          const votesChipLabel = movie.vote_average + " (" + movie.vote_count;
+          const releasedDateChipLabel = movie.release_date;
+          cy.get("span").eq(0).contains(lengthChipLabel);
+          cy.get("span").eq(1).contains(costsChipLabel);
+          cy.get("span").eq(2).contains(votesChipLabel);
+          cy.get("span").eq(3).contains(releasedDateChipLabel);
+        });
+      cy.get("ul")
+        .eq(3)
+        .within(() => {
+          const productionCountriesChipLabels = movie.production_countries.map((p) => p.name);
+          productionCountriesChipLabels.unshift("Production Countries");
+          cy.get("span").each(($card, index) => {
+            cy.wrap($card).contains(productionCountriesChipLabels[index]);
+          });
+        });
+
     });
   });
 });
