@@ -2,7 +2,6 @@ import { excerpt } from "../../src/util";
 
 let movies; // List of movies from TMDB
 let movieReviews; //
-let movieReview;
 
 describe("Reviews tests", () => {
   before(() => {
@@ -19,20 +18,18 @@ describe("Reviews tests", () => {
   });
   beforeEach(() => {
     cy.visit("/");
+    cy.request(
+      `https://api.themoviedb.org/3/movie/
+      ${movies[1].id}
+      /reviews?api_key=${Cypress.env("TMDB_KEY")}`
+    )
+      .its("body")
+      .then((reviews) => {
+        movieReviews = reviews;
+      });
   });
 
   describe("The movie reviews in the movie detail page", () => {
-    before(() => {
-      cy.request(
-        `https://api.themoviedb.org/3/movie/
-        ${movies[1].id}
-        /reviews?api_key=${Cypress.env("TMDB_KEY")}`
-      )
-        .its("body")
-        .then((reviews) => {
-          movieReviews = reviews;
-        });
-    });
     it(" display the review author and excerpt", () => {
       cy.visit(`/movies/${movies[1].id}`);
       cy.get("h3");
@@ -54,17 +51,6 @@ describe("Reviews tests", () => {
     });
   });
   describe("The movie full review page", () => {
-    before(() => {
-      cy.request(
-        `https://api.themoviedb.org/3/movie/
-        ${movies[1].id}
-        /reviews?api_key=${Cypress.env("TMDB_KEY")}`
-      )
-        .its("body")
-        .then((review) => {
-          movieReview = review;
-        });
-    });
     beforeEach(() => {
       cy.visit(`/movies/${movies[1].id}`);
       cy.get("h3");
