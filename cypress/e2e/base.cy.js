@@ -63,7 +63,6 @@ describe("Base tests", () => {
       cy.get("ul")
         .eq(2)
         .within(() => {
-          console.log(movie)
           const lengthChipLabel = movie.runtime;
           const costsChipLabel = movie.revenue.toLocaleString();
           const votesChipLabel = movie.vote_average + " (" + movie.vote_count;
@@ -82,7 +81,6 @@ describe("Base tests", () => {
             cy.wrap($card).contains(productionCountriesChipLabels[index]);
           });
         });
-
     });
   });
 });
