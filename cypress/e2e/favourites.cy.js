@@ -43,5 +43,20 @@ describe("The favourites feature", () => {
         .find("p")
         .contains(movies[3].title);
     });
+
+    describe("delete the favourites", () => {
+      it(" Only show the movies are not deleted", () => {
+        cy.get("button[aria-label='remove from favorites']").eq(0).click();
+        cy.get(".MuiCardHeader-content")
+        .eq(0)
+        .find("p")
+        .contains(movies[3].title);
+      });
+      it(" The deleted movie do not show the red heart", () => {
+        cy.get("button[aria-label='remove from favorites']").eq(0).click();
+        cy.get("button").contains("Home").click();
+        cy.get(".MuiCardHeader-root").eq(1).find("svg").should("not.exist");
+      });
+    });
   });
 });
