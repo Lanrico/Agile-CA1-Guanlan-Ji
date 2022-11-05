@@ -29,6 +29,8 @@ describe("Navigation", () => {
         cy.url().should("include", `/favorites`);
         cy.get("button").contains("Home").click();
         cy.url().should("include", `/`);
+        cy.get("button").contains("Upcoming").click();
+        cy.url().should("include", `/upcoming`);
       });
     });
     describe(
@@ -42,7 +44,9 @@ describe("Navigation", () => {
           cy.get("li").contains('Favorites').click();
           cy.url().should("include", `/favorites`);
           cy.get("li").contains('Home').click();
-          cy.url().should("include", `/`);
+          cy.url().should("include", `/`);          
+          cy.get("li").contains('Upcoming').click();
+          cy.url().should("include", `/upcoming`);
         });
       }
     );
