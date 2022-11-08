@@ -24,18 +24,18 @@ describe("Filtering", () => {
       const searchString = "m";
       const matchingMovies = filterByTitle(movies, searchString);
       cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-      cy.get(".MuiCardHeader-content").should(
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should(
         "have.length",
         matchingMovies.length
       );
-      cy.get(".MuiCardHeader-content").each(($card, index) => {
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
         cy.wrap($card).find("p").contains(matchingMovies[index].title);
       });
     });
     it("handles case when there are no matches", () => {
       const searchString = "xyxxzyyzz";
-      cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-      cy.get(".MuiCardHeader-content").should("have.length", 0);
+      cy.get("#filled-search").clear().type(searchString);
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 0);
     });
   });
 
@@ -46,11 +46,11 @@ describe("Filtering", () => {
       const matchingMovies = filterByGenre(movies, selectedGenreId);
       cy.get("#genre-select").click();
       cy.get("li").contains(selectedGenreText).click();
-      cy.get(".MuiCardHeader-content").should(
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should(
         "have.length",
         matchingMovies.length
       );
-      cy.get(".MuiCardHeader-content").each(($card, index) => {
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
         cy.wrap($card).find("p").contains(matchingMovies[index].title);
       });
     });
@@ -65,11 +65,11 @@ describe("Filtering", () => {
       cy.get("#filled-search").clear().type(searchString);
       cy.get("#genre-select").click();
       cy.get("li").contains(selectedGenreText).click();
-      cy.get(".MuiCardHeader-content").should(
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should(
         "have.length",
         matchingMovies.length
       );
-      cy.get(".MuiCardHeader-content").each(($card, index) => {
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
         cy.wrap($card).find("p").contains(matchingMovies[index].title);
       });
     })
@@ -82,7 +82,7 @@ describe("Filtering", () => {
       cy.get("#genre-select").click();
       cy.get("li").contains(selectedGenreText).click();
 
-      cy.get(".MuiCardHeader-content").should("have.length", 0);
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 0);
     })
   });
 });

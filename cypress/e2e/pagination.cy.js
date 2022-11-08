@@ -1,7 +1,5 @@
-const { CycloneTwoTone } = require("@mui/icons-material");
 
-let movies; // List of movies from TMDB
-let movie; //
+let movies; 
 
 describe("Pagination tests", () => {
   before(() => {
@@ -22,7 +20,7 @@ describe("Pagination tests", () => {
 
   describe("Make correct pagination for movie list page", () => {
     it("displays 20 movies and the pagination panel", () => {
-      cy.get(".MuiCardHeader-root").should("have.length", 20);
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 20);
       cy.get(".MuiPagination-ul>li>a").should("have.length", 10);
     });
 
@@ -36,7 +34,7 @@ describe("Pagination tests", () => {
     it("display the correct movies in the other page", () => {
       cy.get("a[aria-label='Go to page 2']").click();
       cy.url().should("include", `/page2`);
-      cy.get(".MuiCardHeader-root").should("have.length", 20);
+      cy.get(".MuiCardHeader-root").should("have.length", 40);
     });
     it("handle the situation that have no movie", () => {
       cy.get("button").contains("Favorites").click();
