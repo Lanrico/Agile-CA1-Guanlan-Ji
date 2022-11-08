@@ -74,14 +74,11 @@ describe("Filtering", () => {
       });
     })
     it("handles cases when there are not matches", () => {
-      const selectedGenreId = 35;
       const selectedGenreText = "Comedy";
       const searchString = "hgmgmghmghm";
-      const matchingMovies = filterByGenre(filterByTitle(movies, searchString), selectedGenreId) ;
       cy.get("#filled-search").clear().type(searchString);
       cy.get("#genre-select").click();
       cy.get("li").contains(selectedGenreText).click();
-
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 0);
     })
   });

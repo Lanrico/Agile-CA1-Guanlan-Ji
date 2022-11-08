@@ -22,11 +22,11 @@ describe("Base tests", () => {
     it("displays the page header and 20 movies", () => {
       cy.wait(1000);
       cy.get("h3").contains("Discover Movies");
-      cy.get(".MuiCardHeader-root").should("have.length", 20);
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 20);
     });
 
     it("displays the correct movie titles", () => {
-      cy.get(".MuiCardHeader-content").each(($card, index) => {
+      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
         cy.wrap($card).find("p").contains(movies[index].title);
       });
     });
