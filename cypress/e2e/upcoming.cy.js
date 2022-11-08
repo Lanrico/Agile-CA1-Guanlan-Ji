@@ -18,9 +18,9 @@ describe("Upcoming tests", () => {
   });
 
   describe("The upcoming movies page", () => {
-    it("displays the upcoming page header and 11 upcoming movies", () => {
+    it("displays the upcoming page header and 20 upcoming movies", () => {
       cy.get("h3").contains("Upcoming Movies");
-      cy.get(".MuiCardHeader-root").should("have.length", 11);
+      cy.get(".MuiCardHeader-root").should("have.length", 20);
     });
 
     it("displays the correct movie titles", () => {

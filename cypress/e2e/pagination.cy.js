@@ -21,9 +21,9 @@ describe("Pagination tests", () => {
   });
 
   describe("Make correct pagination for movie list page", () => {
-    it("displays 11 movies and the pagination panel", () => {
-      cy.get(".MuiCardHeader-root").should("have.length", 11);
-      cy.get(".MuiPagination-ul>li>a").should("have.length", 6);
+    it("displays 20 movies and the pagination panel", () => {
+      cy.get(".MuiCardHeader-root").should("have.length", 20);
+      cy.get(".MuiPagination-ul>li>a").should("have.length", 10);
     });
 
     it("displays the correct selected pagination button", () => {
@@ -36,7 +36,7 @@ describe("Pagination tests", () => {
     it("display the correct movies in the other page", () => {
       cy.get("a[aria-label='Go to page 2']").click();
       cy.url().should("include", `/page2`);
-      cy.get(".MuiCardHeader-root").should("have.length", 9);
+      cy.get(".MuiCardHeader-root").should("have.length", 20);
     });
     it("handle the situation that have no movie", () => {
       cy.get("button").contains("Favorites").click();
@@ -45,6 +45,7 @@ describe("Pagination tests", () => {
   });    
   describe("Have the correct functions for other nagination buttons", () =>{
     it("the previous and next button", () => {
+      cy.wait(1000);
       cy.get("a[aria-label='Go to page 2']").click();
       cy.get("a[aria-label='Go to previous page']").click();
       cy.url().should("include", `/page1`);
@@ -56,7 +57,7 @@ describe("Pagination tests", () => {
       cy.get("a[aria-label='Go to first page']").click();
       cy.url().should("include", `/page1`);
       cy.get("a[aria-label='Go to last page']").click();
-      cy.url().should("include", `/page2`);
+      cy.url().should("include", `/page100`);
     });
   });
   describe(
@@ -66,18 +67,12 @@ describe("Pagination tests", () => {
     },
     () => {
       it("displays 5 movies and the 4 pages button", () => {
-        cy.get(".MuiCardHeader-root").should("have.length", 5);
-        cy.get(".MuiPagination-ul>li>a").should("have.length", 8);
-      });
-    }
-  );
-  describe(
-    "when the viewport is a mobile scale", {
-      viewportHeight: 896,
-      viewportWidth: 450,
-    },
-    () => {
-      it("displays 5 movies and the 4 pages button", () => {
+        for (var i = 0; i < 20; i++){
+          cy.get("button[aria-label='add to favorites']").eq(i).click();
+        }
+        cy.get("header").find("button").click();
+        cy.get("li").contains('Favorites').click();
+        cy.wait(1000);
         cy.get(".MuiCardHeader-root").should("have.length", 5);
         cy.get(".MuiPagination-ul>li>a").should("have.length", 8);
       });
