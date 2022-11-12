@@ -17,8 +17,8 @@ let labels = {
   5: 'Excellent+',
 };
 
-let dayTrendingmovies; // List of movies from TMDB
-let weekTrendingmovies; //
+let dayTrendingmovies; 
+let weekTrendingmovies; 
 describe("Trending movie tests", () => {
   before(() => {
     // Get the discover movies from TMDB and store them locally.
