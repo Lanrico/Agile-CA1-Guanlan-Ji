@@ -7,9 +7,6 @@ import { useQuery } from "react-query";
 import MovieCard from "../movieCard"
 import Spinner from '../spinner';
 import AddToFavoritesIcon from '../cardIcons/addToFavorites'
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-
 
 const PeopleDetails = ({ person }) => { 
   const [movieCardPage, setMovieCardPage] = useState(1);
@@ -18,8 +15,6 @@ const PeopleDetails = ({ person }) => {
     getPersonMovieCredits
   );
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   if (isLoading) {
     return <Spinner />;
   }
@@ -31,7 +26,7 @@ const PeopleDetails = ({ person }) => {
   const creditsMovies = data.cast
   return (
     <>
-      <Grid item xs={isMobile?12:9} style={{ padding: "1%" }}>
+      <Grid item xs={12} xl={9} style={{ padding: "1%" }}>
         <Paper style={{ padding: "3.5%" }}>
           <Typography variant="h5" component="h3">
             Biography
@@ -41,7 +36,7 @@ const PeopleDetails = ({ person }) => {
           </Typography>
         </Paper>
       </Grid>
-      <Grid item xs={isMobile?12:3} style={{ display: "flex", flexDirection: "column" }}>
+      <Grid item xs={12} xl={3} style={{ display: "flex", flexDirection: "column" }}>
         <Typography variant="h6" component="h4">
           {person.name}<br></br> starred in these movies:
         </Typography>

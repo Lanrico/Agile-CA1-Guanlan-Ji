@@ -15,12 +15,11 @@ describe("Base tests", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/page1");
   });
 
   describe("The Discover Movies page", () => {
     it("displays the page header and 20 movies", () => {
-      cy.wait(1000);
       cy.get("h3").contains("Discover Movies");
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 20);
     });

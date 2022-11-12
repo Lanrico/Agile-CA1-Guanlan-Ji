@@ -43,7 +43,6 @@ describe("Pagination tests", () => {
   });    
   describe("Have the correct functions for other nagination buttons", () =>{
     it("the previous and next button", () => {
-      cy.wait(1000);
       cy.get("a[aria-label='Go to page 2']").click();
       cy.get("a[aria-label='Go to previous page']").click();
       cy.url().should("include", `/page1`);
@@ -55,7 +54,7 @@ describe("Pagination tests", () => {
       cy.get("a[aria-label='Go to first page']").click();
       cy.url().should("include", `/page1`);
       cy.get("a[aria-label='Go to last page']").click();
-      cy.url().should("include", `/page100`);
+      cy.url().should("include", `/page500`);
     });
   });
   describe(
@@ -70,7 +69,6 @@ describe("Pagination tests", () => {
         }
         cy.get("header").find("button").click();
         cy.get("li").contains('Favorites').click();
-        cy.wait(1000);
         cy.get(".MuiCardHeader-root").should("have.length", 5);
         cy.get(".MuiPagination-ul>li>a").should("have.length", 8);
       });

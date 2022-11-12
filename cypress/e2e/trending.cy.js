@@ -47,8 +47,7 @@ describe("Trending movie tests", () => {
 
   describe("The Trending Movies bar", () => {
     it("displays the Trending Movies bar header and 20 trending movies", () => {
-      cy.wait(1000);
-      cy.get(".MuiTypography-h4").contains("What's popular");
+      cy.get(".MuiBox-root>.MuiTypography-h4").contains("What's popular");
       cy.get("a .MuiCardHeader-root").should("have.length", 20);
     });
 
