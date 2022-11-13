@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('clickSpecificElement', (elements, content, index) => {
+  cy.get(elements).contains(content).eq(index).click()
+});
+
+// The test that must be looped by numbers instead of each
+Cypress.Commands.add('checkEachTitle', (elements, content, begin, end, action) => {
+  for (let i = begin; i < end; i++){
+    if (action === "clickPagination")
+    cy.get("li>button").eq(i).click();
+    cy.get(elements).contains(content[i].title);
+  }
+});

@@ -1,3 +1,6 @@
+import clickSpecificElement from "../support/commands"
+import checkEachTitle from "../support/commands"
+
 let people;
 let person;
 let personCreditMovies;
@@ -59,21 +62,19 @@ describe("People page tests", () => {
         cy.get(".MuiStack-root .MuiCardHeader-root").each(($card, index) => {
           cy.wrap($card).find("p").contains(dayTrendingPeople[index].name);
         });
-        cy.get("button").contains("In 7 days").click();
+        cy.clickSpecificElement('button', "In 7 days", 0);
         cy.get(".MuiStack-root .MuiCardHeader-root").each(($card, index) => {
           cy.wrap($card).find("p").contains(weekTrendingPeople[index].name);
         });
       });
       it("navigate to the correct person detail page", () => {
-        cy.get(".MuiStack-root .MuiCardHeader-root").eq(0).click();
+        cy.clickSpecificElement('.MuiStack-root .MuiCardHeader-root', dayTrendingPeople[0].name, 0);
         cy.get("h3").contains(dayTrendingPeople[0].name);
       });
     });
     it("displays the correct people's known_for movies", () => {
       cy.get(".MuiGrid-grid-sm-6 button").eq(0).click();
-      cy.get(".MuiDialog-paper p").contains(people[0].known_for[0].title);
-      cy.get(".MuiDialog-paper p").contains(people[0].known_for[1].title);
-      cy.get(".MuiDialog-paper p").contains(people[0].known_for[2].title);
+      cy.checkEachTitle(".MuiDialog-paper p", people[0].known_for, 0, 3);
     });
   });
 
@@ -110,15 +111,7 @@ describe("People page tests", () => {
       cy.get("table td").eq(2).contains(person.place_of_birth)
     });
     it(" credit movies pagination work well and displays correct credit movies", () => {
-      cy.get(".MuiGrid-grid-xl-3 p").contains(personCreditMovies.cast[0].title)
-      cy.get("li>button").eq(1).click();
-      cy.get(".MuiGrid-grid-xl-3 p").contains(personCreditMovies.cast[1].title)
-      cy.get("li>button").eq(2).click();
-      cy.get(".MuiGrid-grid-xl-3 p").contains(personCreditMovies.cast[2].title)
-      cy.get("li>button").eq(3).click();
-      cy.get(".MuiGrid-grid-xl-3 p").contains(personCreditMovies.cast[3].title)
-      cy.get("li>button").eq(4).click();
-      cy.get(".MuiGrid-grid-xl-3 p").contains(personCreditMovies.cast[4].title)
+      cy.checkEachTitle(".MuiGrid-grid-xl-3 p", personCreditMovies.cast, 0, 4, "clickPagination")
     });
     it("handle the condition that no credit movies", () => {
       cy.visit(`/people/2643681`);
@@ -131,7 +124,8 @@ describe("People page tests", () => {
     },
       () => {
         it(" each part shows in the 100% width and obey the order", () => {
-          cy.get(".MuiGrid-grid-xs-12")
+          cy.get(".MuiGrid-grid-xs-12").eq(0).should('have.css', 'max-width', '100%')
+          cy.get(".MuiGrid-grid-xs-12").eq(1).should('have.css', 'max-width', '100%')
         });
       }
     );
