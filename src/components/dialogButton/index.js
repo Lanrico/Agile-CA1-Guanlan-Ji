@@ -6,8 +6,6 @@ import { Stack } from "@mui/material";
 import Movie from "../movieCard";
 import AddToFavoritesIcon from '../cardIcons/addToFavorites'
 import Typography from "@mui/material/Typography";
-import Zoom from '@mui/material/Zoom';
-
 
 function SimpleDialog(props) {
   const { onClose, selectedValue, open, outputList, title } = props;
@@ -17,7 +15,6 @@ function SimpleDialog(props) {
   };
 
   return (
-    <Zoom in={open}>
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <DialogTitle>
         <Typography variant="h4" component="p">
@@ -33,7 +30,7 @@ function SimpleDialog(props) {
           : null
         ))}
       </Stack>
-    </Dialog></Zoom>
+    </Dialog>
   );
 }
 
