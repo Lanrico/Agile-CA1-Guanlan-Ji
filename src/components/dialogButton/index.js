@@ -7,6 +7,7 @@ import Movie from "../movieCard";
 import AddToFavoritesIcon from '../cardIcons/addToFavorites'
 import Typography from "@mui/material/Typography";
 
+
 function SimpleDialog(props) {
   const { onClose, selectedValue, open, outputList, title } = props;
 
