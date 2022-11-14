@@ -1,7 +1,6 @@
 import truncate from "lodash/truncate";
 
 let upcomingMovies;
-let upcomingMovie;
 
 describe("Upcoming tests", () => {
   before(() => {
