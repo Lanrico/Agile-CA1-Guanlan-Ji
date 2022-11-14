@@ -1,3 +1,5 @@
+import truncate from "lodash/truncate";
+
 let movies; // List of movies from TMDB
 let movie; //
 
@@ -26,7 +28,7 @@ describe("Base tests", () => {
 
     it("displays the correct movie titles", () => {
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(movies[index].title);
+        cy.wrap($card).find("p").contains(truncate(movies[index].title, {length:21}));
       });
     });
   });

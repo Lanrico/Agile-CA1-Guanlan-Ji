@@ -1,3 +1,5 @@
+import truncate from "lodash/truncate";
+
 let upcomingMovies;
 let upcomingMovie;
 
@@ -25,7 +27,7 @@ describe("Upcoming tests", () => {
 
     it("displays the correct movie titles", () => {
       cy.get(".MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(upcomingMovies[index].title);
+        cy.wrap($card).find("p").contains(truncate(upcomingMovies[index].title, {length:21}));
       });
     });
   });
