@@ -1,3 +1,5 @@
+import truncate from "lodash/truncate";
+
 let movies; // List of movies from TMDB
 let movie; //
 
@@ -15,28 +17,25 @@ describe("Base tests", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/page1");
   });
 
   describe("The Discover Movies page", () => {
     it("displays the page header and 20 movies", () => {
-      cy.wait(1000);
       cy.get("h3").contains("Discover Movies");
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 20);
     });
 
     it("displays the correct movie titles", () => {
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(movies[index].title);
+        cy.wrap($card).find("p").contains(truncate(movies[index].title, {length:21}));
       });
     });
   });
   describe("The movie details page", () => {
     before(() => {
       cy.request(
-        `https://api.themoviedb.org/3/movie/${
-          movies[1].id
-        }?api_key=${Cypress.env("TMDB_KEY")}`
+        `https://api.themoviedb.org/3/movie/436270?api_key=${Cypress.env("TMDB_KEY")}`
       )
         .its("body")
         .then((movieDetails) => {
@@ -44,7 +43,7 @@ describe("Base tests", () => {
         });
     });
     beforeEach(() => {
-      cy.visit(`/movies/${movies[1].id}`);
+      cy.visit(`/movies/436270`);
     });
     it(" displays the movie title, overview and genres", () => {
       cy.get("h3").contains(movie.title);

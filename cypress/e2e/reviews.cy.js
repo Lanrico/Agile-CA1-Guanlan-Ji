@@ -55,8 +55,7 @@ describe("Reviews tests", () => {
       cy.visit(`/movies/${movies[1].id}`);
       cy.get("h3");
       cy.get("button").contains("Reviews").click();
-      cy.wait(2000);
-      cy.get("a").contains("Full Review").eq(0).click();
+      cy.get("td>a").contains("Full Review").eq(0).click();
     });
     it(" display the name of the author", () => {
       const author = movieReviews.results.map(a => a.author)[0];

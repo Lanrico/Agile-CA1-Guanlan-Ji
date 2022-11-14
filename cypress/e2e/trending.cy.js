@@ -17,8 +17,8 @@ let labels = {
   5: 'Excellent+',
 };
 
-let dayTrendingmovies; // List of movies from TMDB
-let weekTrendingmovies; //
+let dayTrendingmovies; 
+let weekTrendingmovies; 
 describe("Trending movie tests", () => {
   before(() => {
     // Get the discover movies from TMDB and store them locally.
@@ -47,8 +47,7 @@ describe("Trending movie tests", () => {
 
   describe("The Trending Movies bar", () => {
     it("displays the Trending Movies bar header and 20 trending movies", () => {
-      cy.wait(1000);
-      cy.get(".MuiTypography-h4").contains("What's popular");
+      cy.get(".MuiBox-root>.MuiTypography-h4").contains("What's popular");
       cy.get("a .MuiCardHeader-root").should("have.length", 20);
     });
 

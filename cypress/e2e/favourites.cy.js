@@ -19,10 +19,9 @@ describe("The favourites feature", () => {
 
   describe("Selecting favourites", () => {
     it("selected movie card shows the red heart", () => {
-      cy.wait(1000);
-      cy.get(".MuiCardHeader-root").eq(21).find("svg").should("not.exist");
+      cy.get(".MuiGrid-grid-md-4 .MuiCardHeader-root").eq(1).find("svg").should("not.exist");
       cy.get("button[aria-label='add to favorites']").eq(1).click();
-      cy.get(".MuiCardHeader-root").eq(21).find("svg");
+      cy.get(".MuiGrid-grid-md-4 .MuiCardHeader-root").eq(1).find("svg");
     });
   });
 

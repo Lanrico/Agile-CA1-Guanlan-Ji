@@ -1,4 +1,5 @@
 import { filterByGenre, filterByTitle } from "../support/e2e";
+import truncate from "lodash/truncate";
 
 let movies; // List of Discover movies from TMDB
 
@@ -29,7 +30,7 @@ describe("Filtering", () => {
         matchingMovies.length
       );
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(matchingMovies[index].title);
+        cy.wrap($card).find("p").contains(truncate(matchingMovies[index].title, {length:21}));
       });
     });
     it("handles case when there are no matches", () => {
@@ -51,7 +52,7 @@ describe("Filtering", () => {
         matchingMovies.length
       );
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(matchingMovies[index].title);
+        cy.wrap($card).find("p").contains(truncate(matchingMovies[index].title, {length:21}));
       });
     });
   });
@@ -70,7 +71,7 @@ describe("Filtering", () => {
         matchingMovies.length
       );
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(matchingMovies[index].title);
+        cy.wrap($card).find("p").contains(truncate(matchingMovies[index].title, {length:21}));
       });
     })
     it("handles cases when there are not matches", () => {
