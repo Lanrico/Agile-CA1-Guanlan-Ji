@@ -35,3 +35,9 @@ Cypress.Commands.add('checkEachTitle', (elements, content, begin, end, action) =
     cy.get(elements).contains(content[i].title);
   }
 });
+
+Cypress.Commands.add('enterEmailAndPasswordAndLogin', (email, password) => {
+  cy.get("#email").type(email);
+  cy.get("#password").type(password);
+  cy.clickSpecificElement("button[type='submit']", "Sign In", 0);
+});
