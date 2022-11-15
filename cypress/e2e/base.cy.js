@@ -17,21 +17,9 @@ describe("Base tests", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/page1");
+    cy.visit("http://localhost:3000/page1");
   });
 
-  describe("The Discover Movies page", () => {
-    it("displays the page header and 20 movies", () => {
-      cy.get("h3").contains("Discover Movies");
-      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 20);
-    });
-
-    it("displays the correct movie titles", () => {
-      cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(truncate(movies[index].title, {length:21}));
-      });
-    });
-  });
   describe("The movie details page", () => {
     before(() => {
       cy.request(
@@ -44,20 +32,6 @@ describe("Base tests", () => {
     });
     beforeEach(() => {
       cy.visit(`/movies/436270`);
-    });
-    it(" displays the movie title, overview and genres", () => {
-      cy.get("h3").contains(movie.title);
-      cy.get("h3").contains("Overview");
-      cy.get("h3").next().contains(movie.overview);
-      cy.get("ul")
-        .eq(1)
-        .within(() => {
-          const genreChipLabels = movie.genres.map((g) => g.name);
-          genreChipLabels.unshift("Genres");
-          cy.get("span").each(($card, index) => {
-            cy.wrap($card).contains(genreChipLabels[index]);
-          });
-        });
     });
     it(" displays the movie length, revenue, votes, released date and production countries", () => {
       cy.get("ul")

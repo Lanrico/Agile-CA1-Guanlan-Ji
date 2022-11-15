@@ -2,7 +2,6 @@
   "name": "movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Lanrico.github.io/Agile-CA1-Guanlan-Ji",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -22,8 +21,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "start:ci": "start-server-and-test 'http-server ./build  -p 3000 -P http://localhost:3000?' 3000 'cypress run --browser chrome '",
     "build": "react-scripts build",
