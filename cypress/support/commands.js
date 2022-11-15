@@ -36,8 +36,10 @@ Cypress.Commands.add('clickSpecificElement', (elements, content, index) => {
 // The test that must be looped by numbers instead of each
 Cypress.Commands.add('checkEachTitle', (elements, content, begin, end, action) => {
   for (let i = begin; i < end; i++){
+    console.log(content)
     if (action === "clickPagination")
     cy.get("li>button").eq(i).click();
+    if (content.length !== 0)
     cy.get(elements).contains(content[i].title);
   }
 });
