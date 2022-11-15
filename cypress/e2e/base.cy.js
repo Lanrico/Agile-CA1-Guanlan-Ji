@@ -17,7 +17,7 @@ describe("Base tests", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/page1");
+    cy.visit("http://localhost:3000/page1");
   });
 
   describe("The Discover Movies page", () => {
