@@ -34,8 +34,8 @@ describe("Base tests", () => {
       cy.visit(`/movies/436270`);
     });
     it(" displays the movie length, revenue, votes, released date and production countries", () => {
-      cy.get("ul")
-        .eq(2)
+      cy.get(".MuiGrid-grid-xs-9 ul")
+        .eq(1)
         .within(() => {
           const lengthChipLabel = movie.runtime;
           const costsChipLabel = movie.revenue.toLocaleString();
