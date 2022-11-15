@@ -24,3 +24,4 @@ This is the Assignment 1 project of agile software practice. In this assignment,
 + Several pull requests to source control
 + Use github to implement auto-deployment
 + Configure and create several component testing
++ Code splitting to improve efficiency.
