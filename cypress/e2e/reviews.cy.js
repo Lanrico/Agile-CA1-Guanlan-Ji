@@ -33,7 +33,7 @@ describe("Reviews tests", () => {
     it(" display the review author and excerpt", () => {
       cy.visit(`/movies/${movies[1].id}`);
       cy.get("h3");
-      cy.get("button").contains("Reviews").click();
+      cy.get(".MuiGrid-grid-xs-9>button").contains("Reviews").click();
       const authorList = movieReviews.results.map(a => a.author);
       const excerptList = movieReviews.results.map(c => c.content);
       // console.log(excerpt(excerptList[0]).replace(/\s+/g, " "))
@@ -46,7 +46,7 @@ describe("Reviews tests", () => {
     it(" handle the situation that do not have any reviews", () => {
       cy.visit(`/movies/732459`);
       cy.get("h3");
-      cy.get("button").contains("Reviews").click();
+      cy.get(".MuiGrid-grid-xs-9>button").contains("Reviews").click();
       cy.get("tbody>tr").should("have.length", 0);
     });
   });
@@ -54,7 +54,7 @@ describe("Reviews tests", () => {
     beforeEach(() => {
       cy.visit(`/movies/${movies[1].id}`);
       cy.get("h3");
-      cy.get("button").contains("Reviews").click();
+      cy.get(".MuiGrid-grid-xs-9>button").contains("Reviews").click();
       cy.get("td>a").contains("Full Review").eq(0).click();
     });
     it(" display the name of the author", () => {
