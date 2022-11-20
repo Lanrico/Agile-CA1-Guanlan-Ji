@@ -14,6 +14,9 @@ This is the Assignment 1 project of agile software practice. In this assignment,
 + Youtube video: https://www.youtube.com/watch?v=gyUPbHF2MzE
 + Auto Deployment: https://lanrico.github.io/Agile-CA1-Guanlan-Ji/
 
+## Setup requirement(run the command before testing)
+npm install firebase
+
 ## What I have done in the Assignment:
 
 + Test the baseline features not addressed in the E2E lab, e.g. the movie reviews feature, the chips in movie details page, the delete button in favourites, and so on.
