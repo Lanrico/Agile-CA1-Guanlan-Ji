@@ -1,3 +1,4 @@
+import truncate from "lodash/truncate";
 let movies;
 const movieId = 497582; // Enola Holmes movie id
 
@@ -31,7 +32,7 @@ describe("The favourites feature", () => {
         cy.get(".MuiCardHeader-content")
         .eq(0)
         .find("p")
-        .contains(movies[3].title);
+        .contains(truncate(movies[3].title, {length:21}));
       });
       it(" The deleted movie do not show the red heart", () => {
         cy.get("button[aria-label='remove from favorites']").eq(0).click();
