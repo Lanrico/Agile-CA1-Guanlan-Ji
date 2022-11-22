@@ -66,10 +66,6 @@ https://github.com/Lanrico/Agile-CA1-Guanlan-Ji
 
 [ Briefly explain the work you did to satisfy the requirements of the Outstanding grade category, and include proof (e.g. screenshots) of its success. Also, mention the files that contain evidence of this work.
 
-![](./images/sample.png)
-
-State any other evidence of independent learning achieved while completing this assignment.
-
 ### Component test.
 
 Several component tests are included in this repository, as it shows in the screenshots below. 
