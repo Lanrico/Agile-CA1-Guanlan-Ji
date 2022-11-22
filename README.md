@@ -1,30 +1,92 @@
-# Assignment 1 - ReactJS app test.
+# Assignment 1 - Agile Software Practice.
 
-Name: Guanlan Ji
-Student number: 20099881
+__Name:__ Guanlan Ji
 
-## Overview.
+This repository contains the implementation of a React App and its associated Cypress tests and GitLab CI pipeline.
 
-This is the Assignment 1 project of agile software practice. In this assignment, I test the baseline features not addressed in the E2E lab, the new features developed in Web CA, and some indepented learning features.
+## React App Features.
 
-## Repository Links.
+[ Provide a bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features).]
+ 
++ People page
++ Person detail page
++ A better way to show person's known for movies - dialogs
++ Routing: several parameterized URL for people/person detail page, and each pagination.
++ Several data hyperlinking for people
++ Trending movies and people for day and week, and vote shows by stars
++ authentication and 3rd-party authentication (Firebase)
++ Pagination
++ Responsive UI for most new views
++ Improve the way that the posters of movies and people shows.
++ New MUI components: Material Icons, Rating, Pagination, Paper, Toolbar, Table, Tab
+
+## Setup requirements (run the command before npm start)
+
+npm install firebase
+
+## Related links
 
 + Github: https://github.com/Lanrico/Agile-CA1-Guanlan-Ji
-+ Gitlab: https://gitlab.com/Lanrico/agile-ca1-ci
++ Gitlab: https://gitlab.com/Lanric0/agile-ca1-ci
 + Youtube video: https://www.youtube.com/watch?v=gyUPbHF2MzE
 + Auto Deployment: https://lanrico.github.io/Agile-CA1-Guanlan-Ji/
 
-## Setup requirement(run the command before testing)
-npm install firebase
+## Automated Tests.
 
-## What I have done in the Assignment:
+### Best test cases.
 
-+ Test the baseline features not addressed in the E2E lab, e.g. the movie reviews feature, the chips in movie details page, the delete button in favourites, and so on.
-+ Test the new features created in the Web App Dev CA1.
-+ Create Cypress Custom commands to help test.
-+ Obey the branching policy
-+ Continuous Integration: Use gitlab pipeline to Install, Build, and Test jobs.
-+ Several pull requests to source control
-+ Use github to implement auto-deployment
-+ Configure and create several component testing
-+ Code splitting to improve efficiency.
+[ State the pathnames of the __two__ (only) test file that best represents your knowledge and understanding of Cypress testing code.]
+
++ cypress/e2e/people.cy.js
++ cypress/e2e/pagination.cy.js
+
+### Cypress Custom commands.
+
+[ Specify the test file(s) that use a custom Cypress command(s) that you implemented.]
+
++ cypress/e2e/login.cy.js
++ cypress/e2e/people.cy.js
++ cypress/component/login.cy.js
+
+## Code Splitting.
+
+[Specify the pathname of each the file that contains evidence of code splitting in your React app.]
+
++ src/components/personDetails/index.js
++ src/pages/movieDetailsPage.js
++ src/pages/movieReviewPage.js
+
+## Pull Requests.
+
+[ Specify the URL of the GitHub repository that contains a record of Pull Requests for the React App.]
+
+https://github.com/Lanrico/Agile-CA1-Guanlan-Ji
+
+## Independent learning.
+
+[ Briefly explain the work you did to satisfy the requirements of the Outstanding grade category, and include proof (e.g. screenshots) of its success. Also, mention the files that contain evidence of this work.
+
+![](./images/sample.png)
+
+State any other evidence of independent learning achieved while completing this assignment.
+
+### Component test.
+
+Several component tests are included in this repository, as it shows in the screenshots below. 
+
+![](./images/component_test.png)
+![](./images/component_test_run.png)
+
+Related files:
++ cypress/component/login.cy.js
++ cypress/component/ratingBar.cy.js
++ cypress/component/spinner.cy.js
++ cypress/support/component.cy.js
++ cypress/support/component-index.html
+
+### Auto-deployment.
+
+This Movie App is deployment in the github, and the url is https://lanrico.github.io/Agile-CA1-Guanlan-Ji/ . The url can be visited anytime to use this Movie App.
+
+![](./images/deployment1.png)
+![](./images/deployment2.png)

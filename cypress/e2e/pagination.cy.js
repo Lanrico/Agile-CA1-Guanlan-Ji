@@ -19,7 +19,7 @@ describe("Pagination tests", () => {
   });
 
   describe("Make correct pagination for movie list page", () => {
-    it("displays 20 movies and the pagination panel", () => {
+    it("displays 20 movies and the correct pagination panel", () => {
       cy.get(".MuiGrid-grid-sm-6 .MuiCardHeader-content").should("have.length", 20);
       cy.get(".MuiPagination-ul>li>a").should("have.length", 10);
     });
